@@ -21,4 +21,5 @@
   "json.format.enable": true,
   "javascript.implicitProjectConfig.experimentalDecorators": true,
   "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false
 }

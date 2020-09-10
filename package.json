@@ -6,21 +6,31 @@
   "scripts": {
     "test": "npm run build && npm run lint",
     "lint": "eslint . --f visualstudio --ext .ts,.tsx",
-    "build": "tsc -p .",
+    "start": "npm-run-parallel redux-server serve",
+    "serve": "npm run build-devtools && opener http://localhost:8000 && tabris serve -w -a",
     "watch": "tsc -p . -w --preserveWatchOutput --inlineSourceMap",
-    "start": "tabris serve -a -w",
-    "gitpod": "tabris serve -a -w --no-intro --port 8080 --external $(gp url 8080):443"
+    "gitpod": "tabris serve -a -w --no-intro --port 8080 --external $(gp url 8080):443",
+    "redux-server": "remotedev --hostname=localhost --port=8000",
+    "build-devtools": "browserify ./node_modules/remote-redux-devtools/lib/index.js --exclude redux --standalone reduxDevtools -o ./generated/remote-redux-devtools.js"
   },
   "dependencies": {
+    "npm-run-parallel": "^0.6.0",
+    "redux": "^4.0.5",
     "tabris": "^3.7.0-dev.20200910",
     "tabris-decorators": "^3.6"
   },
   "devDependencies": {
+    "@types/remote-redux-devtools": "^0.5.4",
     "@typescript-eslint/eslint-plugin": "^2.19.0",
     "@typescript-eslint/parser": "^2.19.0",
+    "browserify": "^16.5.2",
     "eslint": "^6.8.0",
     "eslint-plugin-prefer-arrow": "^1.1.7",
     "eslint-plugin-react": "^7.18.3",
+    "opener": "^1.5.2",
+    "redux-devtools-extension": "^2.13.8",
+    "remote-redux-devtools": "^0.5.16",
+    "remotedev-server": "^0.3.1",
     "typescript": "^3.9.7"
   }
 }
