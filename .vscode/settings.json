@@ -1,0 +1,24 @@
+{
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "editor.tabSize": 2,
+  "files.exclude": {
+    "**/.git": true
+  },
+  "editor.wordWrap": "on",
+  "editor.wordBasedSuggestions": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.format.enable": false,
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "eslint.codeActionsOnSave.mode": "problems",
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "json.format.enable": true,
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+}
