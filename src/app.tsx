@@ -1,21 +1,31 @@
 import {createStore} from 'redux';
-import {CheckBox, contentView} from 'tabris';
-import {connect, injector, register, StateProvider} from 'tabris-decorators';
+import {contentView} from 'tabris';
+import {injector, register, StateProvider, DefaultRootState} from 'tabris-decorators';
 import {reduxDevTools} from './redux-dev';
 import {reducers} from './redux-reducers';
+import {VisibilityFilters} from './redux-types';
+import {TodoListView} from './TodoListView';
 
 injector.jsxProcessor.unsafeBindings = 'error';
-register(StateProvider, createStore(reducers, reduxDevTools));
 
-const Test = connect<CheckBox>(
-  state => ({
-    text: state.myString
-  }),
-  dispatch => ({
-    onSelect: ({checked}) => dispatch({type: 'TOGGLE_STRING', checked})
-  })
-)(CheckBox);
+const initState: DefaultRootState = {
+  todos: [
+    {
+      id: 0,
+      completed: false,
+      text: 'Hello'
+    },
+    {
+      id: 1,
+      completed: true,
+      text: 'World'
+    }
+  ],
+  visibilityFilter: VisibilityFilters.SHOW_ALL
+};
+
+register(StateProvider, createStore(reducers, initState, reduxDevTools));
 
 contentView.append(
-  <Test/>
+  <TodoListView stretch/>
 );
