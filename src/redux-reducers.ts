@@ -4,7 +4,7 @@ import {VisibilityFilters} from './redux-types';
 
 export const reducers = combineReducers<DefaultRootState, AnyAction>({
 
-  todos: (state = [], action) => {
+  todos(state = [], action) {
     switch (action.type) {
       case 'ADD_TODO':
         return [
@@ -24,7 +24,7 @@ export const reducers = combineReducers<DefaultRootState, AnyAction>({
     }
   },
 
-  visibilityFilter: (state = VisibilityFilters.SHOW_ALL, action) => {
+  visibilityFilter(state = VisibilityFilters.SHOW_ALL, action) {
     switch (action.type) {
       case 'SET_VISIBILITY_FILTER':
         return action.filter;

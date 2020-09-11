@@ -1,5 +1,5 @@
-import {TodoItem, VisibilityFilters} from './redux-types';
-import {toggleTodo} from './redux-actions';
+import {TodoItem, VisibilityFilters} from '../redux-types';
+import {toggleTodo} from '../redux-actions';
 import {ListView, connect} from 'tabris-decorators';
 import {Attributes, TextView} from 'tabris';
 import {Cell} from 'tabris-decorators';
@@ -18,9 +18,12 @@ export const TodoListView = connect<ListView<TodoItem>>(
 
 )((attributes: Attributes<ListView<TodoItem>>) =>
 
-  <ListView {...attributes}>
-    <Cell selectable>
-      <TextView markupEnabled bind-text={toMarkup('item')}></TextView>
+  <ListView padding={{top: 4}} {...attributes}>
+    <Cell selectable padding={4} height={40}>
+      <TextView markupEnabled stretchY
+          left={16}
+          font='22px'
+          bind-text={toMarkup('item')}/>
     </Cell>
   </ListView>
 
@@ -29,7 +32,7 @@ export const TodoListView = connect<ListView<TodoItem>>(
 function toMarkup(path: string): Binding {
   return to(path, (item: TodoItem) => !item ? '' : item.completed
     ? <$>• <del>{item.text}</del></$>
-    : <$>• <ins>{item.text}</ins></$>
+    : <$>• {item.text}</$>
   );
 }
 
